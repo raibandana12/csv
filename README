@@ -1,0 +1,24 @@
+##Creation of CSV file upload Java Application
+
+Technology used:
+•	Java 8
+•	Spring boot 2
+•	Maven
+•	H2 in-memory
+H2 in-memory is used to remove dependency on running a database server.
+Classes
+•	CsvApplication is a main class.
+•	CsvFileController is rest controller where the rest endpoints are defined.
+•	CsvReaderService is serveric layer which does the business logic. Controller points to this class and this class interacts with repository CRUD operation.
+•	Customer is an entity class which creates table in the database
+•	CustomerRepository is an interface which extends jpa repository and inherits methods, not having to write simple CRUD methods.
+
+
+##Approach
+- InputstreamReader reads the bytes and decodes them to character using the specified charset.
+- BufferedReader reads from the charaters from inputstreamreader.
+- CSVParser parses the read from bufferedreader , also ignores the header for the csv file.
+- getRecords() method is used to extract the records from parsers.
+- Each record is looped through and a customer object is created for those records and added into a list.
+- findByCustomerRef() method is used to store the records to Database
+
